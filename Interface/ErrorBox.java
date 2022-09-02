@@ -9,7 +9,9 @@ public class ErrorBox extends CopyFileView {
     private JButton erroreturn;
     private JLabel errortext;
     private JPanel errorpanel;
-    //Listener pentru butonul de return
+    /************************************************
+     * Listener pentru butonul de return. Dispare fereastra de eroare.
+     ***********************************************/
     public ErrorBox() {
         erroreturn.addActionListener(new ActionListener() {
             @Override
@@ -18,7 +20,9 @@ public class ErrorBox extends CopyFileView {
             }
         });
     }
-    // Functie pentru interfata
+    /************************************************
+     * Functia care deschide interfata.
+     ***********************************************/
     public void ErrorBox(){
         errorbox.setContentPane(errorpanel);
         errorbox.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

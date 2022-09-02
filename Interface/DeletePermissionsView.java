@@ -22,7 +22,11 @@ public class DeletePermissionsView extends AddPermissionsView{
     private JButton deletePermissionsButton;
 
     public DeletePermissionsView() {
-        //Butonul de deletepermission care apeleaza functia specifica pentru DB sau fisier in functie de modalitatea precizata
+        /************************************************
+         * Listener pentru butonul de delete permissions. Acesta preia ID-ul, parola si permisinuile care doresc sa fie
+         * sterse din interfata. Permissionvalue are valoarea false pentru a sterge.
+         * Dataform este preferinta user-ului intre DB sau fisier.
+         ***********************************************/
         deletePermissionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,7 +38,9 @@ public class DeletePermissionsView extends AddPermissionsView{
                 }
             }
         });
-        // Functie de clear
+        /************************************************
+         * Listener pentru functia de clear.
+         ***********************************************/
         clearButtonPermissions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +48,9 @@ public class DeletePermissionsView extends AddPermissionsView{
             }
         });
     }
-    // Functia de interfata
+    /************************************************
+     * Functia care deschide interfata.
+     ***********************************************/
     public void DeletePermissionsMenu(){
         deletepermissions.setContentPane(DeletePermissionsPanel);
         deletepermissions.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -51,7 +59,9 @@ public class DeletePermissionsView extends AddPermissionsView{
         deletepermissions.pack();
         deletepermissions.setVisible(true);
     }
-    //Functie de clear
+    /************************************************
+     * Functia de clear.
+     ***********************************************/
     public void permissiondeleteclear(){
         PermissionsUserIDText.setText("");
         PermissionsUserPWText.setText("");

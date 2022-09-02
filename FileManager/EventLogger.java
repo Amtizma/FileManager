@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 public class EventLogger {
     int numberoflines = 500;
-    // Functie care face scrierea in fisier a evenimentului
+    /************************************************
+     * Functia scrie in fisier fiecare actiuna a user-ului conectat.
+     ***********************************************/
     public void eventLogger(String id, String event) throws IOException {
         String timeStamp = new SimpleDateFormat("dd.MM.yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         try {
@@ -20,7 +22,9 @@ public class EventLogger {
             e.printStackTrace();
         }
     }
-    // Functie care numara liniile si sterge ce este peste 500)
+    /************************************************
+     * Functia numara liniile si sterge liniile care trec de 500.
+     ***********************************************/
     public void countLines() throws IOException {
         int lines = 1;
         try {

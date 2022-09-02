@@ -17,7 +17,9 @@ public class DeleteFileView extends DeletePermissionsView{
     JLabel DeleteConfirmLabel;
     JPanel DeleteFile;
 
-    //Listener pentru clear
+    /************************************************
+     * Listener pentru clear.
+     ***********************************************/
     public DeleteFileView() {
         clearButtonDelete.addActionListener(new ActionListener() {
             @Override
@@ -28,7 +30,9 @@ public class DeleteFileView extends DeletePermissionsView{
         });
     }
 
-    // Functia pentru interfata
+    /************************************************
+     * Functia care deschide interfata de deletefile.
+     ***********************************************/
     public void DeleteFileMenu(){
         deletefile.setContentPane(DeleteFile);
         deletefile.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -17,7 +17,9 @@ public class RenameFileView extends DeleteFileView{
     JPanel RenameFilePanel;
     JLabel RenameFileConfirm;
 
-    //Listener pentru clear
+    /************************************************
+     * Listener pentru clear
+     ***********************************************/
     public RenameFileView() {
         clearButtonRenameFile.addActionListener(new ActionListener() {
             @Override
@@ -26,13 +28,17 @@ public class RenameFileView extends DeleteFileView{
             }
         });
     }
-    // Functia de clear
+    /************************************************
+     * Functia de clear
+     ***********************************************/
     public void renameclear(){
         RenameFileOldPath.setText("");
         RenameFileNewPath.setText("");
         RenameFileConfirm.setText("");
     }
-    // Functia de interfata
+    /************************************************
+     * Functia care deschide interfata de renameFile.
+     ***********************************************/
     public void RenameFileMenu(){
         renamefile.setContentPane(RenameFilePanel);
         renamefile.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

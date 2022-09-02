@@ -22,7 +22,9 @@ public class AddPermissionsView extends RemoveUserView {
     private JButton addPermissionsButton;
     public AddPermissionsView() {
 
-        // Listener pentru butonul de addPermission. dataform retine daca user-ul a selectat fisiser sau baza de date.
+        /************************************************
+         * Listener pentru butonul de addpermissions. Dataform retine daca user-ul a selectat fisier sau baza de date.
+         ***********************************************/
         addPermissionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,7 +37,6 @@ public class AddPermissionsView extends RemoveUserView {
             }
         });
 
-        // Functie de clear
         clearButtonPermissions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +44,9 @@ public class AddPermissionsView extends RemoveUserView {
             }
         });
     }
-    // Meniul pentru addPermissions
+    /************************************************
+     * Functia care genereaza interfata de addPermissions.
+     ***********************************************/
     public void AddPermissionsMenu(){
         addpermissions.setContentPane(AddPermissionsPanel);
         addpermissions.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,7 +55,9 @@ public class AddPermissionsView extends RemoveUserView {
         addpermissions.pack();
         addpermissions.setVisible(true);
     }
-    // Functie de clear
+    /************************************************
+     * Functie de clear.
+     ***********************************************/
     public void permissionaddclear(){
         PermissionsUserIDText.setText("");
         PermissionsUserPWText.setText("");

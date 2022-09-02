@@ -17,7 +17,9 @@ public class RemoveUserView extends SignUpView{
     JButton returnButtonUser;
     JLabel ConfirmUserDelete;
     JPanel RemoveUserPanel;
-    // Listener pentru clear
+    /************************************************
+     * Listener pentru functia de clear.
+     ***********************************************/
     public RemoveUserView() {
         clearButtonUser.addActionListener(new ActionListener() {
             @Override
@@ -26,13 +28,17 @@ public class RemoveUserView extends SignUpView{
             }
         });
     }
-    //Functia de clear
+    /************************************************
+     * Functia de clear.
+     ***********************************************/
     public void clear(){
         UsersIDTextField.setText("");
         UsersPWTextField.setText("");
         ConfirmUserDelete.setText("");
     }
-    // Functia de interfata
+    /************************************************
+     * Functia care deschide interfata de removeuser.
+     ***********************************************/
     public void RemoveUserMenu(){
         removeuser.setContentPane(RemoveUserPanel);
         removeuser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

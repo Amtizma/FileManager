@@ -31,7 +31,9 @@ public class Authentification extends MainMenu{
     private JCheckBox showPasswordLogInCheckBox;
 
     public Authentification() {
-        // Listener care deschide meniul de SignUp
+        /************************************************
+         * Listener-ul deschide meniul de SignUp si il face pe cel de LogIn sa dispara.
+         ***********************************************/
         SignUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +41,11 @@ public class Authentification extends MainMenu{
                 authframe.setVisible(false);
             }
         });
-        // Listener pentru butonul de LogIn
+        /************************************************
+         * Listener pentru butonul de logIn. Preia ID-ul si parola din interfata
+         * si foloseste functiile de login din FileManager. Deschide meniul principal daca conectarea a avut succes.
+         * Dataform-ul specifica daca user-ul a selectat baza de date sau fisier.
+         ***********************************************/
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +65,9 @@ public class Authentification extends MainMenu{
                 }
             }
         });
-        // Listener pentru butonul de return
+        /************************************************
+         * Listener pentru butonul de return din signUp. Inchide fereastra de signUp si o reafiseaza pe cea de LogIn.
+         ***********************************************/
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +78,9 @@ public class Authentification extends MainMenu{
                 Confirmation.setText("");
             }
         });
-        // listener pentru butonul de return din interfata de schimbare a parolei
+        /************************************************
+         * Listener pentru butonul de return din interfata de schimbare a parolei. O inchide si reapare cea de logIn.
+         ***********************************************/
         returnButtonChangePassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,7 +89,9 @@ public class Authentification extends MainMenu{
                 changepasswordclear();
             }
         });
-        // functie de clear
+        /************************************************
+         * Functie de clear.
+         ***********************************************/
         ClearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +99,10 @@ public class Authentification extends MainMenu{
                 passwordField.setText("");
             }
         });
-        // listener pentru butonul de logout
+        /************************************************
+         * Listener pentru butonul de logOut. Inchide meniul principal, si reapeleaza functia care
+         * deschide interfata de conectare.
+         ***********************************************/
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +118,9 @@ public class Authentification extends MainMenu{
                 }
             }
         });
-        // listener care deschide interfata de schimbare a parolei
+        /************************************************
+         * Listener care deschide interfata de schimbare a parolei.
+         ***********************************************/
         changePasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,14 +129,18 @@ public class Authentification extends MainMenu{
             }
         });
 
-        // listener care retine in dataform tipul de metoda selectat (fisier sau baza de date)
+        /************************************************
+         * Listener care memoreaza daca user-ul a selectat baza de date sau fisier ca forma de conectare.
+         ***********************************************/
         dataBaseOrTXTFileCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dataform = dataBaseOrTXTFileCheckBox.isSelected();
             }
         });
-        // listener pentru butonul care face parola vizibila sau nu)
+        /************************************************
+         * Listener care face parola vizibila sau nu.
+         ***********************************************/
         showPasswordLogInCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,7 +149,9 @@ public class Authentification extends MainMenu{
             }
         });
     }
-    // Functie pentru interfata
+    /************************************************
+     * Functia care deschide interfata de coenctare.
+     ***********************************************/
     public void Auth(){
         authframe.setContentPane(AuthPanel);
         authframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

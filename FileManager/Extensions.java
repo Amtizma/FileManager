@@ -1,6 +1,9 @@
 package FileManager;
 
 public class Extensions{
+    /************************************************
+     * Extensiile fisierelor
+     ***********************************************/
     public enum imageExtensions{
         jpg,
         jpeg,
@@ -49,10 +52,4 @@ public class Extensions{
         changepermission
 
     }
-    public void getExtensions() {
-        for (extensions ext : extensions.values())
-             {
-                 System.out.println(ext);
-        }
-        }
 }

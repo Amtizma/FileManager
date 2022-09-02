@@ -145,15 +145,6 @@ class FileManagerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void reverselist() {
-        fileman.scanFolder();
-        fileman.reverselist(table);
-        int i = 0;
-        if(table.getValueAt(0, 1).equals("Seminar_ETTI_II_G1B-2A_21.10.2021")) i = 1;
-        Assertions.assertEquals(1, i);
-    }
-
-    @org.junit.jupiter.api.Test
     void scanFolder() {
         fileman.scanFolder();
         fileman.show(table);

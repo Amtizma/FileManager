@@ -24,7 +24,10 @@ public class ChangePasswordMenu extends ErrorBox {
     private JCheckBox ShowPasswordChangePW;
 
     public ChangePasswordMenu() {
-        // Functie care modifica parola in functie de modalitatea de conectare aleasa (DB sau fisier)
+        /************************************************
+         * Listener care apeleaza functiile de schimbare a parolei, in functie de
+         * ce metoda de conectare a ales user-ul.
+         ***********************************************/
         ChangePasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,14 +40,18 @@ public class ChangePasswordMenu extends ErrorBox {
             }
         });
 
-        // Functie de clear
+        /************************************************
+         * Listener ce apeleaza functia de clear.
+         ***********************************************/
         clearButtonChangePassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 changepasswordclear();
             }
         });
-        // Functie care face parola vizibila sau nu
+        /************************************************
+         * Functie care face parola vizibila sau nu.
+         ***********************************************/
         ShowPasswordChangePW.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,7 +67,9 @@ public class ChangePasswordMenu extends ErrorBox {
         });
     }
 
-    // Functia pentru interfata
+    /************************************************
+     * Functia care deschide interfata de schimbare a parolei.
+     ***********************************************/
     public void changePasswordMenu(){
         changepassword.setContentPane(ChangePasswordPanel);
         changepassword.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,7 +78,9 @@ public class ChangePasswordMenu extends ErrorBox {
         changepassword.pack();
         changepassword.setVisible(true);
     }
-    // Clear
+    /************************************************
+     * Functie de clear
+     ***********************************************/
     public void changepasswordclear(){
         ChangePasswordUserIDText.setText("");
         ChangePasswordUserPWText.setText("");

@@ -23,7 +23,11 @@ public class SignUpView{
     private JCheckBox ShowPasswordSignUp;
     boolean dataform = false;
     public SignUpView() {
-        // Listener pentru butonul de SignUp care apeleaza functia specifica modalitatii de conectare aleasa
+        /************************************************
+         * Listener pentru butonul de signUp. Preia ID-ul si parola din interfata
+         * si apeleaza functiile de signUp din clasa SignUp.
+         * Dataforma reprezinta alegerea user-ului intre DB si fisier.
+         ***********************************************/
         SignUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,7 +37,9 @@ public class SignUpView{
                 if(!dataform) as.signUp(id, password, Confirmation);
             }
         });
-        // Listener pentru clear
+        /************************************************
+         * Listener pentru functia de clear.
+         ***********************************************/
         ClearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +48,9 @@ public class SignUpView{
                 Confirmation.setText("");
             }
         });
-        // Listener pentru butonul care face parola vizibila
+        /************************************************
+         * Listener pentru butonul care face parola vizibila sau nu.
+         ***********************************************/
         ShowPasswordSignUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +59,9 @@ public class SignUpView{
             }
         });
     }
-    // Functia de interfata
+    /************************************************
+     * Functia care deschide interfata de signUp.
+     ***********************************************/
     public void SignUpMenu(){
         signupframe.setContentPane(SignUpPanel);
         signupframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

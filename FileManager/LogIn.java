@@ -10,7 +10,6 @@ public class LogIn {
     ArrayList<String> permissions = new ArrayList<>();
     public MD5 md5 = new MD5();
     final String txtname = "userdata.txt";
-    // Functia de logIn
     public void logIn(String id, String password, JLabel Confirmation) {
         try {
             BufferedReader b = new BufferedReader(new FileReader(txtname));
@@ -33,7 +32,9 @@ public class LogIn {
             e.printStackTrace();
         }
     }
-
+    /************************************************
+     * Functia verifica permisiunile user-ului conectat
+     ***********************************************/
     public boolean verifyPermissions(String permis) {
         boolean perm = false;
         for (String permission : permissions) {

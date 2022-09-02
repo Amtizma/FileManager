@@ -18,7 +18,9 @@ public class CopyFileView extends RenameFileView{
     JButton clearButtonCopyFile;
     JButton returnButtonCopyFile;
     public CopyFileView() {
-        // Listener pentru clear
+        /************************************************
+         * Listener ce apeleaza functia de clear
+         ***********************************************/
         clearButtonCopyFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,13 +29,17 @@ public class CopyFileView extends RenameFileView{
         });
     }
 
-    // Functia de clear
+    /************************************************
+     * Functia de clear
+     ***********************************************/
     public void copyclear(){
         CopyFileOldPath.setText("");
         CopyFileNewPath.setText("");
         CopyFileConfirm.setText("");
     }
-    // Functia de interfata
+    /************************************************
+     * Functia care deschide interfata de copyFile.
+     ***********************************************/
     public void CopyFileMenu(){
         copyfile.setContentPane(CopyFilePanel);
         copyfile.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

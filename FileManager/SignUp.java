@@ -11,7 +11,10 @@ import java.util.Arrays;
 public class SignUp extends LogIn{
     final String connection = "jdbc:mysql://localhost:3306/UserData?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
-    // Functie de signUp cu fisier
+    /************************************************
+     * Functia de signUp pentru fisier verifica daca id-ul nu este deja existent,
+     * iar daca nu este scrie in fisier un nou user.
+     ***********************************************/
     public void signUp(String id, String password, JLabel Confirmation) {
         try {
             if(!id.isEmpty() && !password.isEmpty()) {
@@ -39,7 +42,10 @@ public class SignUp extends LogIn{
             e.printStackTrace();
         }
     }
-    // Functia de signUp pentru baza de date
+    /************************************************
+     * Functia de signUp pentru DataBase verifica daca ID-ul este disponibil, si daca este
+     * adauga o noua intrare in baza de date pentru un user.
+     ***********************************************/
     public void signUpDB(String id, String password, JLabel Confirmation){
         double value=0.0;
         if(!id.isEmpty() && !password.isEmpty()) {
@@ -77,7 +83,10 @@ public class SignUp extends LogIn{
         }
         else Confirmation.setText("Username or/and password can't be null. ");
     }
-    // Functie de log in pentru baza de date
+    /************************************************
+     * Functia de logIn pentru baza de date verifica daca ID-ul si parola primite din intefata
+     * exista in baza de date.
+     ***********************************************/
     public void logInDB(String id, String password, JLabel Confirmation) {
         try {
             Connection conn = DriverManager.getConnection(connection,
@@ -97,7 +106,10 @@ public class SignUp extends LogIn{
             e.printStackTrace();
         }
     }
-    // Functie pentru afisarea user-ilor din baza de date
+    /************************************************
+     * Functia de showUsersDB preia ID-ul si parola utilizatorilor din baza de date
+     * si le afiseaza in tabel.
+     ***********************************************/
     public void showUsersDB(JTable table){
         try {
             Connection conn = DriverManager.getConnection(connection,
@@ -125,7 +137,12 @@ public class SignUp extends LogIn{
         }
 
     }
-    // Functie pentru schimbare permisiunilor unui utilizator (permissionvalue = true - adauga permisiuni, false - stergere permisiuni)
+    /************************************************
+     * Functia primeste un boolean(permissionvalue) care daca este true adauga permisuni unui user,
+     * iar daca este false sterge permisiuni.
+     * Functia are nevoie de ID-ul userului, parola si ce permisiuni dorim sa adaugam/stergem.
+     * Functia mai intai verifica daca permisiunea pe care dorim sa o adaugam/stergem exista, verifica si daca user-ul exista
+     ***********************************************/
     public void changePermissionsDB(String id, String password, String permissions1, JLabel Confirm, boolean permissionvalue) throws IOException, NoSuchAlgorithmException, SQLException {
         boolean permissionexist1 = false;
         boolean permissionexists1 = false;
@@ -186,7 +203,9 @@ public class SignUp extends LogIn{
         }
         conn.close();
     }
-    // Functie pentru stergerea unui user din baza de date
+    /************************************************
+     * Functia de stergere a unui user verifica daca user-ul exista si il elimina din baza de date.
+     ***********************************************/
     public void removeUserDB(String id, String password, JLabel Confirmation) throws Exception {
         Connection conn = DriverManager.getConnection(connection,
                 "root", "048498");
@@ -204,7 +223,10 @@ public class SignUp extends LogIn{
         }
         conn.close();
     }
-    // Functie pentru schimbarea parolei unui user din baza de date
+    /************************************************
+     * Functia verifica daca user-ul exista in baze de date si ii schimba parola
+     * Are nevoie de ID, parola veche si de parola noua.
+     ***********************************************/
     public void changePasswordDB(String id, String password, String newpassword, JLabel Confirmation) throws Exception {
         Connection conn = DriverManager.getConnection(connection,
                 "root", "048498");
@@ -226,7 +248,10 @@ public class SignUp extends LogIn{
     public SignUp() {
 
     }
-    // Functia de log in pentru fisier
+    /************************************************
+     * Functia de logIn cu fisier cauta in fisier daca combinatia de ID si parola
+     * primita din interfata exista.
+     ***********************************************/
     public void logIn(String id, String password, JLabel Confirmation) {
         boolean verifydata = false;
         try {
@@ -251,7 +276,10 @@ public class SignUp extends LogIn{
         }
     }
 
-    // Functia pentru afisarea user-ilor din fisier
+    /************************************************
+     * Functia de showUsers citeste intreg fisierul din care selecteaza doar ID-ul si parola
+     * si le afiseaza in tabel.
+     ***********************************************/
     public void showUsers(JTable table){
         try {
             String[] col = {"Index", "ID", "Password"};
@@ -275,14 +303,19 @@ public class SignUp extends LogIn{
         } catch (Exception e) {
             e.printStackTrace();
         } }
-    // Boolean-uri folosite pentru schimbarea permisiunilor
+    /************************************************
+     * Boolean-uri folosite pentru functia de schimbare de permisiuni in fisier.
+     ***********************************************/
     boolean verifydata2 = false;
     String userinfo = "asd";
     boolean permissionexist = false;
     boolean duplicate = false;
     boolean permissionexists = false;
 
-    // Functie care gaseste linia pentru un user precizat (folosita pentru changePermissions)
+    /************************************************
+     * Functia gaseste linia in care se afla permisiunile user-ului ale carui permisiuni dorim sa le schimbam,
+     * in functie de ID-ul si parola primite din interfata si salveaza acea linia in variabila userinfo.
+     ***********************************************/
     public void findLine(String id, String password) {
         try {
             BufferedReader b = new BufferedReader(new FileReader(txtname));
@@ -300,7 +333,12 @@ public class SignUp extends LogIn{
         }
     }
 
-    // Functie intermediara care creeaza un fisier temporar
+    /************************************************
+     * Functia care schimba permisunile partial, creeaza un fisier temporar in care copiaza toate liniile si
+     * adauga si linia gasita de findLine pe care o modifica in functie de boolean-ul permissionvalue
+     * true = adauga, false = stergere.
+     * Functia verifica si daca permisiunile exista deja si daca permisunile nu exista deloc.
+     ***********************************************/
     public void changePermissionsPartially(String perm, boolean permissionvalue) throws IOException {
         File inputFile = new File(txtname);
         File tempFile = new File("temp.txt");
@@ -350,7 +388,11 @@ public class SignUp extends LogIn{
         tempFile.deleteOnExit();
     }
 
-    // Functie finala de schimbare de permisiuni pentru fisier
+    /************************************************
+     * Functia finala de changePermissions, care cuprinde si celelalte 2 functii anterioare (findLine
+     * si changepermissionspartially). Sterge fisierul auxiliar creat de functia anterioara.
+     * Aceasta functie primeste si ID-ul, parola si permisiunile dorite si reactualizeaza lista de permisiuni a user-ului.
+     ***********************************************/
     public void changePermissions(String id, String password, String permissions1, JLabel Confirm, boolean permissionvalue) throws IOException, NoSuchAlgorithmException {
         if(id.equals("admin")) Confirm.setText("You can't change admin's permissions.");
         else {
@@ -397,7 +439,9 @@ public class SignUp extends LogIn{
             if (!perm) System.out.println("You don't have the permission to do that. ");
         }
     }
-    // Functie intermediara pentru eliminarea unui user care creeaza un fisier temporar
+    /************************************************
+     * Functia creeaza un fisier temporar in care este stearsa linia gasita cu findLine
+     ***********************************************/
     public void removeUserPartially() throws IOException {
         File inputFile = new File(txtname);
         File tempFile = new File("myTempFile.txt");
@@ -412,7 +456,10 @@ public class SignUp extends LogIn{
         writer.close();
         reader.close();
     }
-    //Functie pentru eliminarea unui user
+    /************************************************
+     * Functia elimina user-ul in functie de ID-ul si parola primita. Sterge fisierul auxiliar.
+     * Verifica si daca user-ul si parola primite din interfata exista.
+     ***********************************************/
     public void removeUser(String id, String password, JLabel Confirmation) throws Exception {
         if(id.equals("admin")) Confirmation.setText("You can't remove admin");
         else {
@@ -434,7 +481,9 @@ public class SignUp extends LogIn{
             } else Confirmation.setText("User doesn't exist. ");
         }
     }
-    // Functie care verifica permisiunile
+    /************************************************
+     * Functie care verifica permisiunile unui user.
+     ***********************************************/
     public boolean verifyPermissions(String permis) {
         boolean perm = false;
         for (String permission : permissions) {
@@ -445,7 +494,9 @@ public class SignUp extends LogIn{
         }
         return perm;
     }
-    // Functie intermediara pentru schimbarea parolei
+    /************************************************
+     * Functia creeaza un fisier auxiliar in care parola unui user este schimbata.
+     ***********************************************/
     public void changePasswordPartially(String newPassword) throws IOException, NoSuchAlgorithmException {
         File inputFile = new File(txtname);
         File tempFile = new File("myTempFile1.txt");
@@ -463,7 +514,10 @@ public class SignUp extends LogIn{
         writer.close();
         reader.close();
     }
-    // Functie pentru schimbarea parolei
+    /************************************************
+     * Functia primeste din interfata ID-ul unui user, parola veche si noua parola.
+     * Verifica daca primele 2 exista si sterge fisierul auxiliar.
+     ***********************************************/
     public void changePassword(String id, String password, String newpassword, JLabel Confirmation) throws Exception {
         if(id.equals("admin")) Confirmation.setText("You can't change admin's password");
         else {
